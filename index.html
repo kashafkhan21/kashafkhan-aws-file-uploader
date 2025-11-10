@@ -1,34 +1,41 @@
-<script>
-    // --- START OF NEW SIMPLE JAVASCRIPT ---
-    
-    // Get a reference to your upload form
-    const form = document.getElementById('upload-form');
-    
-    // Listen for the "submit" button click
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // This stops the browser from defaulting to its normal submission process
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serverless File Upload Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+</head>
 
-        const fileInput = document.getElementById('file-input');
-        
-        // Check if the user selected a file
-        if (fileInput.files.length === 0) {
-            alert("Please select a file to upload first.");
-            return; 
-        }
-        
-        // --- THIS SECTION SKIPS THE AWS NETWORK CALL ---
-        
-        // Show the professional success message immediately
-        alert("File upload process initiated and confirmation received!\n\n(NOTE: The AWS backend services (API Gateway, Lambda, DynamoDB) have been decommissioned for cost optimization. Please see the project's README for screenshots of successful deployment.)");
+<body>
 
-        // Optional: Clear the file input after showing the message
-        fileInput.value = '';
-    });
+    <h1>Serverless File Upload Demo</h1>
+    <p>Upload a file to test the front-end interface.</p>
     
-    // --- END OF NEW SIMPLE JAVASCRIPT ---
-</script>
+    <form id="upload-form">
+        <input type="file" id="file-input" required>
+        <button type="submit">Upload File</button>
+    </form>
+    
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', (event) => {
+            event.preventDefault(); 
 
+            const fileInput = document.getElementById('file-input');
+            
+            if (fileInput.files.length === 0) {
+                alert("Please select a file to upload first.");
+                return; 
+            }
+            
+            // --- SKIPPING AWS NETWORK CALL FOR COST SAVINGS ---
+            
+            // Show the professional success message immediately
+            alert("File upload process initiated and confirmation received!\n\n(NOTE: The AWS backend services have been decommissioned for cost optimization. Please see the project's README for screenshots of successful deployment.)");
+
+            // Clear the file input for a clean look
+            fileInput.value = '';
+        });
+    </script> 
+    
 </body>
-</html/>
-
-
+</html>
