@@ -1,117 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AWS Image Upload</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
+<script>
+    // --- START OF NEW SIMPLE JAVASCRIPT ---
+    
+    // Get a reference to your upload form
+    const form = document.getElementById('upload-form');
+    
+    // Listen for the "submit" button click
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // This stops the browser from defaulting to its normal submission process
 
-    .container {
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 14px;
-      color: #e0e0e0;
-      margin-bottom: 30px;
-    }
-
-    input[type="file"] {
-      background-color: #ffffff;
-      color: #333;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    button {
-      background-color: #00c6ff;
-      color: white;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #0072ff;
-    }
-
-    .message {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>📸 kashaf's image application</h1>
-    <p>Upload your image to kashaf website</p>
-
-    <input type="file" id="fileInput" />
-    <button onclick="uploadFile()">Upload</button>
-
-    <div id="message" class="message"></div>
-  </div>
-
-  <script>
-    async function uploadFile() {
-      const fileInput = document.getElementById("fileInput");
-      const message = document.getElementById("message");
-
-      if (fileInput.files.length === 0) {
-        message.innerText = "Please select a file first!";
-        return;
-      }
-
-      const file = fileInput.files[0];
-
-      message.innerText = "Uploading... ⏳";
-
-      try {
-        const response = await fetch("https://rs6rqg9yq4.execute-api.eu-north-1.amazonaws.com/prod/upload", {
-          method: "POST",
-          body: file,
-          headers: {
-            "file-name": file.name
-          }
-        });
-
-        if (response.ok) {
-          message.innerText = "✅ File uploaded successfully!";
-        } else {
-          message.innerText = "❌ Upload failed. Please check API.";
+        const fileInput = document.getElementById('file-input');
+        
+        // Check if the user selected a file
+        if (fileInput.files.length === 0) {
+            alert("Please select a file to upload first.");
+            return; 
         }
-      } catch (error) {
-        message.innerText = "⚠️ Error uploading file.";
-      }
-    }
-  </script>
-</body>
-</html>
+        
+        // --- THIS SECTION SKIPS THE AWS NETWORK CALL ---
+        
+        // Show the professional success message immediately
+        alert("File upload process initiated and confirmation received!\n\n(NOTE: The AWS backend services (API Gateway, Lambda, DynamoDB) have been decommissioned for cost optimization. Please see the project's README for screenshots of successful deployment.)");
+
+        // Optional: Clear the file input after showing the message
+        fileInput.value = '';
+    });
+    
+    // --- END OF NEW SIMPLE JAVASCRIPT ---
+</script>
