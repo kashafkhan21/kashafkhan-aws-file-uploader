@@ -5,7 +5,7 @@ This project demonstrates a fully operational, cost-optimized, and highly scalab
 🔗 Live Demo & Project Status
 
 
-Live Demo URL:  https://kashafkhan21.github.io/kashafkhan-aws-file-uploader/contact.html
+Live Demo URL:  https://kashafkhan21.github.io/kashafkhan-aws-file-uploader/
 Status: Complete & Verified (Zero Running Cost)
 Architecture Serverless (Backend automatically decommissions when idle) 
 
