@@ -21,6 +21,9 @@ The system is designed to upload files to highly durable storage (S3) and log th
     * Logs the file transaction details (*FileKey, *BucketName, *Unique ID) to the *DynamoDB* table (dynamodb.put_item).
 4.  Confirmation: A successful response (statusCode: 200) is returned to the user.
 
+
+***I edited the index.html file in github to give you output about successfull website and to save the cost of aws services after deleting the data in services.***
+
 🛠 Key Technologies & Concepts
  
 AWS Core: AWS Lambda, API Gateway, Amazon S3, Amazon DynamoDB, IAM Roles
